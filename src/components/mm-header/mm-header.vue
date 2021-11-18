@@ -3,7 +3,7 @@
   <header class="mm-header">
     <h1 class="header">
       <a href="https://github.com/maomao1996/Vue-mmPlayer" target="_blank">
-        mmPlayer 在线音乐播放器
+        在线音乐播放器
       </a>
     </h1>
     <dl class="user">
@@ -80,7 +80,7 @@ export default {
   data() {
     return {
       user: {}, // 用户数据
-      uidValue: '' // 记录用户 UID
+      uidValue: '113236638' // 记录用户 UID
     }
   },
   computed: {
@@ -88,6 +88,7 @@ export default {
   },
   created() {
     this.uid && this._getUserPlaylist(this.uid)
+    this._getUserPlaylist(this.uidValue)
   },
   methods: {
     // 打开对话框
@@ -113,16 +114,6 @@ export default {
       this.user = {}
       this.setUid(null)
       this.$mmToast('退出成功！')
-    },
-    // 登录
-    login() {
-      if (this.uidValue === '') {
-        this.$mmToast('UID 不能为空')
-        this.openDialog(0)
-        return
-      }
-      this.openDialog(3)
-      this._getUserPlaylist(this.uidValue)
     },
     // 获取用户数据
     _getUserPlaylist(uid) {
